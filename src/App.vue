@@ -2,7 +2,8 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <!-- <router-link to="/cv-app">Cv-app</router-link> -->
-    <router-link to="/coingecko">Coin Gecko Api</router-link>
+    <router-link to="/coingecko">Coin Gecko Api</router-link> |
+    <router-link to="/todolist">To Do List</router-link>
   </div>
   <router-view/>
 </template>

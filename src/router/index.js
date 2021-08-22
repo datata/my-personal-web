@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 // import CvApp from '../views/CvApp.vue'
 import CoinGecko from '../views/CoinGecko.vue';
+import ToDoList from '../views/ToDoList.vue';
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     path: '/coingecko',
     name: 'CoinGecko',
     component: CoinGecko
+  },
+  {
+    path: '/todolist',
+    name: 'ToDoList',
+    component: ToDoList
   }
 ]
 
