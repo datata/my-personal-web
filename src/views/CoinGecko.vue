@@ -6,24 +6,24 @@
       v-model="coinSearch"
     ></el-input>
     <el-table v-loading="loading" :data="filterCoins" stripe style="width: 100%">
-      <el-table-column type="index" label="#" width="50"> </el-table-column>
-      <el-table-column prop="image" label="Logo" width="80">
+      <el-table-column type="index" label="#"> </el-table-column>
+      <el-table-column prop="image" label="Logo">
         <template #default="scope">
           <img :src="scope.row.image" style="width: 2em" />
         </template>
       </el-table-column>
-      <el-table-column prop="name" label="Name" width="180"> </el-table-column>
-      <el-table-column prop="symbol" label="Symbol" width="180">
+      <el-table-column prop="name" label="Name"> </el-table-column>
+      <el-table-column prop="symbol" label="Symbol">
         <template #default="scope">
           <span>{{ scope.row.symbol.toUpperCase() }} </span>
         </template>
       </el-table-column>
-      <el-table-column prop="current_price" label="Price" width="120">
+      <el-table-column prop="current_price" label="Price" align="right">
         <template #default="scope">
           <span>{{ scope.row.current_price.toLocaleString() }} €</span>
         </template>
       </el-table-column>
-      <el-table-column prop="price_change_24h" label="Price change 24h">
+      <el-table-column prop="price_change_24h" label="Price change 24h" align="right">
         <template #default="scope">
           <span :style="[scope.row.price_change_24h > 0 ? 'color:green' : 'color:red']">{{ scope.row.price_change_24h.toLocaleString() }} </span> €
         </template>
@@ -64,6 +64,7 @@ export default {
 
 <style>
 .table-container {
+
   margin: 20px 20px 20px 20px;
 }
 </style>
