@@ -14,10 +14,18 @@
       </el-table-column>
       <el-table-column prop="name" label="Name" width="180"> </el-table-column>
       <el-table-column prop="symbol" label="Symbol" width="180">
+        <template #default="scope">
+          <span>{{ scope.row.symbol.toUpperCase() }} </span>
+        </template>
       </el-table-column>
-      <el-table-column prop="current_price" label="Price">
+      <el-table-column prop="current_price" label="Price" width="120">
         <template #default="scope">
           <span>{{ scope.row.current_price.toLocaleString() }} €</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="price_change_24h" label="Price change 24h">
+        <template #default="scope">
+          <span :style="[scope.row.price_change_24h > 0 ? 'color:green' : 'color:red']">{{ scope.row.price_change_24h.toLocaleString() }} </span> €
         </template>
       </el-table-column>
     </el-table>
