@@ -1,5 +1,10 @@
 <template>
-  <el-form :inline="true"  @submit.prevent="onSubmit" :model="formInline" class="demo-form-inline">
+  <el-form
+    :inline="true"
+    @submit.prevent="onSubmit"
+    :model="formInline"
+    class="demo-form-inline"
+  >
     <el-form-item>
       <el-input v-model="formInline.task" placeholder="Write a task"></el-input>
     </el-form-item>
@@ -7,11 +12,15 @@
       <el-button type="primary" @click="onSubmit()">Add Task</el-button>
     </el-form-item>
   </el-form>
-  <el-table :data="toDoList" style="width: 100%">
+  <el-table
+    :data="toDoList"
+    style="width: 100%"
+    :row-class-name="tableRowClassName"
+    >
     <el-table-column type="index" label="#"> </el-table-column>
     <el-table-column prop="task" label="Task">
       <template #default="scope">
-        <span :style="[scope.row.done ? 'text-decoration:line-through;' : '']"
+        <span :style="textDecorationLineThrough(scope.row.done)"
           >{{ scope.row.task }}
         </span>
       </template>
@@ -61,17 +70,29 @@ export default {
     handleEdit(index, row) {
       console.log(index, row);
     },
-    handleDelete(index, row) {
+    handleDelete(index) {
       this.toDoList.splice(index, 1);
     },
-    handleDone(index, row) {
+    handleDone(index) {
       this.toDoList[index].done === false
         ? (this.toDoList[index].done = true)
         : (this.toDoList[index].done = false);
     },
+    tableRowClassName({row}) {
+      if (row.done) {
+        return "success-row";
+      }
+      return "";
+    },
+    textDecorationLineThrough(rowStatus){
+      return rowStatus ? 'text-decoration:line-through;' : ''
+    }
   },
 };
 </script>
 
 <style>
+  .el-table .success-row {
+    background: greenyellow;
+  }
 </style>
